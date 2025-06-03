@@ -1,10 +1,15 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv"
+dotenv.config()
 
 try {
-     await mongoose.connect("mongodb://localhost:27017/Todo")
+
+     await mongoose.connect(process.env.MONGODN_URL)
      mongoose.set({"debug":true})
+     console.log("connected successful")
 } catch (error) {
     console.log(error)
+    console.log("not connected")
     
 }
 
